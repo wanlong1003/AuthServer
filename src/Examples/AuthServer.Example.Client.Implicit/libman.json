@@ -1,0 +1,13 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "oidc-client@1.10.1",
+      "destination": "wwwroot/",
+      "files": [
+        "oidc-client.js"
+      ]
+    }
+  ]
+}
