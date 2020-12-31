@@ -45,7 +45,7 @@ namespace AuthServer.Server
                         ClientName = "Password Client",
                         ClientSecrets = { new Secret("123456".Sha256())},
                         AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-                        AllowedScopes = { "api1", StandardScopes.OpenId }
+                        AllowedScopes = { "api1", StandardScopes.OpenId, StandardScopes.Profile }
                     },
                     new Client(){
                         ClientId = "code_client",
@@ -57,7 +57,7 @@ namespace AuthServer.Server
                         AllowOfflineAccess = true,
                         AlwaysIncludeUserClaimsInIdToken = true,
                         RequireConsent = true,
-                        AllowedScopes = { "api1", StandardScopes.OpenId }
+                        AllowedScopes = { "api1", StandardScopes.OpenId, StandardScopes.Profile }
                     },
                     new Client(){
                         ClientId = "implicit_client",
@@ -68,7 +68,7 @@ namespace AuthServer.Server
                         RedirectUris = { "http://localhost:5003/callback.html" },
                         PostLogoutRedirectUris = { "http://localhost:5003/index.html" },
                         AllowedCorsOrigins = { "http://localhost:5003" },
-                        AllowedScopes = { "api1", StandardScopes.OpenId },
+                        AllowedScopes = { "api1", StandardScopes.OpenId, StandardScopes.Profile },
                     },
                     new Client(){
                         ClientId = "hybrid_client",
@@ -78,7 +78,7 @@ namespace AuthServer.Server
                         AllowOfflineAccess = true,
                         RedirectUris = { "http://localhost:5004/signin-oidc" },
                         PostLogoutRedirectUris = { "http://localhost:5004/signout-callback-oidc" },
-                        AllowedScopes = { "api1", StandardScopes.OpenId }
+                        AllowedScopes = { "api1", StandardScopes.OpenId, StandardScopes.Profile }
                     },
                 })
                 .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>()

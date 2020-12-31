@@ -37,8 +37,8 @@ namespace AuthServer.Example.Client.Code
                 options.ResponseType = "code";
                 //options.SaveTokens = true;
                 options.RequireHttpsMetadata = false;
-                options.Scope.Add("openid");
-                options.Scope.Add("profile");
+                //options.Scope.Add("openid");
+                //options.Scope.Add("profile");
 
                 IdentityModelEventSource.ShowPII = true;
             });
