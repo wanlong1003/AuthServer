@@ -6,11 +6,11 @@ document.getElementById("logout").addEventListener("click", logout, false);
 //配置
 var config = {
     authority: "http://localhost:5000",
-    client_id: "implicit",
-    redirect_uri: "https://localhost:5003/callback.html",
+    client_id: "implicit_client",
+    redirect_uri: "http://localhost:5003/callback.html",
     response_type: "id_token token",  //同时返回id_token和token
     scope: "openid api1",
-    post_logout_redirect_uri: "https://localhost:5003/index.html",
+    post_logout_redirect_uri: "http://localhost:5003/index.html",
 };
 
 var mgr = new Oidc.UserManager(config);

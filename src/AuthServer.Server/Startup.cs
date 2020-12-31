@@ -3,14 +3,8 @@ using IdentityServer4.Models;
 using IdentityServer4.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using static IdentityServer4.IdentityServerConstants;
 
 namespace AuthServer.Server
@@ -38,7 +32,6 @@ namespace AuthServer.Server
                     new ApiScope("api1","API2"),
                     new ApiScope("api2","API1")
                 })
-                //添加客户端
                 .AddInMemoryClients(new Client[]{
                      new Client(){
                         ClientId = "client",
@@ -61,21 +54,21 @@ namespace AuthServer.Server
                         AllowedGrantTypes = GrantTypes.Code,
                         RedirectUris = { "http://localhost:5002/signin-oidc" },
                         PostLogoutRedirectUris = { "http://localhost:5002/signout-callback-oidc" },
-                        AllowOfflineAccess = true,  //启用刷新token
-                        AlwaysIncludeUserClaimsInIdToken = true,  //Token中是否包含用户Claim信息
-                        RequireConsent = true,  //是否需要用户同意，单点登录设置为false
+                        AllowOfflineAccess = true,
+                        AlwaysIncludeUserClaimsInIdToken = true,
+                        RequireConsent = true,
                         AllowedScopes = { "api1", StandardScopes.OpenId }
                     },
                     new Client(){
                         ClientId = "implicit_client",
                         ClientName = "Implicit Client",
                         AllowedGrantTypes = GrantTypes.Implicit,
-                        AllowAccessTokensViaBrowser = true,  //是否通过浏览器返回access_token
-                        RequireConsent = true,  //是否需要用户同意
-                        RedirectUris = { "https://localhost:5003/callback.html" },
-                        PostLogoutRedirectUris = { "https://localhost:5003/index.html" },
-                        AllowedCorsOrigins = { "https://localhost:5003" },
-                        AllowedScopes = { "api1", StandardScopes.OpenId }
+                        AllowAccessTokensViaBrowser = true,
+                        RequireConsent = true,
+                        RedirectUris = { "http://localhost:5003/callback.html" },
+                        PostLogoutRedirectUris = { "http://localhost:5003/index.html" },
+                        AllowedCorsOrigins = { "http://localhost:5003" },
+                        AllowedScopes = { "api1", StandardScopes.OpenId },
                     },
                     new Client(){
                         ClientId = "hybrid_client",
@@ -91,24 +84,21 @@ namespace AuthServer.Server
                 .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>()
                 .Services.AddScoped<IProfileService, ProfileService>();
 
-            services.AddControllersWithViews();
             services.AddCors();
+            services.AddControllersWithViews();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseDeveloperExceptionPage();
-            app.UseHttpsRedirection();
             app.UseCors(configurePolicy =>
             {
                 configurePolicy.AllowAnyOrigin();
                 configurePolicy.AllowAnyMethod();
                 configurePolicy.AllowAnyHeader();
-                //configurePolicy.AllowCredentials();
             });
             app.UseStaticFiles();
+            app.UseAuthentication();
             app.UseRouting();
-            app.UseAuthorization();
             app.UseAuthorization();
             app.UseIdentityServer();
             app.UseEndpoints(endpoints =>
