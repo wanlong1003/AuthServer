@@ -3,6 +3,19 @@
 }
 
 <div>@Context.User.Identity.Name</div>
+
+<div>@Context.User.Identity.Name</div>
+
+<div>
+    AccessToken= @ViewBag.AccessToken
+</div>
+<div>
+    RefreshToken= @ViewBag.RefreshToken
+</div>
+<div>
+    IdToken = @ViewBag.IdToken
+</div>
+
 <ul>
     @foreach (var claim in Context.User.Claims)
     {

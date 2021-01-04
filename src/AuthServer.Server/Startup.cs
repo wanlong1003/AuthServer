@@ -76,10 +76,13 @@ namespace AuthServer.Server
                         ClientSecrets = { new Secret("123456".Sha256())},
                         AllowedGrantTypes = GrantTypes.Hybrid,
                         AllowOfflineAccess = true,
+                        RequireConsent = true,
+                        RequirePkce = false,
+                        AllowAccessTokensViaBrowser = true,
                         RedirectUris = { "https://localhost:5004/signin-oidc" },
                         PostLogoutRedirectUris = { "https://localhost:5004/signout-callback-oidc" },
                         AllowedCorsOrigins = { "https://localhost:5004" },
-                        AllowedScopes = { "api1", StandardScopes.OpenId, StandardScopes.Profile }
+                        AllowedScopes = { "api1", StandardScopes.OpenId, StandardScopes.Profile }                        
                     },
                 })
                 .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>()
