@@ -106,20 +106,20 @@ namespace AuthServer.Server
                 //.AddMicrosoftAccount("MicrosoftAccount", options =>
                 //{
                 //    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-                //    options.ClientId = "";
-                //    options.ClientSecret = "";
-                //})
+                //    options.ClientId = "d58a9b28-f829-44f6-a507-8c539fe00462";
+                //    options.ClientSecret = "Eae_4uhJ-AO~ri3DtE_wrrk7A928c4OSZ-";
+                //});
                 //.AddTwitter("Twitter", options =>
                 //{
                 //    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
                 //    options.ConsumerKey = "";
                 //    options.ConsumerSecret = "";
                 //})
-                .AddLinkedIn("LinkedIn", options =>
-                {
-                    options.ClientId = "86q7iml2m0t9fe";
-                    options.ClientSecret = "528EI4X9BUzjCesM";
-                })
+                //.AddLinkedIn("LinkedIn", options =>
+                //{
+                //    options.ClientId = "86q7iml2m0t9fe";
+                //    options.ClientSecret = "528EI4X9BUzjCesM";
+                //})
                 //.AddGitHub(options =>
                 //{
                 //    options.ClientId = "648c067bd022b25f09d7";
