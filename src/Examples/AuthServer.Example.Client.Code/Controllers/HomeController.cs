@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -16,6 +17,9 @@ namespace AuthServer.Example.Client.Code.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.AccessToken = HttpContext.GetTokenAsync("access_token").GetAwaiter().GetResult();
+            ViewBag.RefreshToken = HttpContext.GetTokenAsync("refresh_token").GetAwaiter().GetResult();
+            ViewBag.IdToken = HttpContext.GetTokenAsync("id_token").GetAwaiter().GetResult();
             return View();
         }
     }
