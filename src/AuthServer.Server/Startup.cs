@@ -55,7 +55,7 @@ namespace AuthServer.Server
                         RedirectUris = { "https://localhost:5002/signin-oidc" },
                         PostLogoutRedirectUris = { "https://localhost:5002/signout-callback-oidc" },
                         AllowOfflineAccess = true,
-                        AlwaysIncludeUserClaimsInIdToken = true,                        
+                        AlwaysIncludeUserClaimsInIdToken = true,
                         RequireConsent = true,
                         AllowedScopes = { "api1", StandardScopes.OpenId, StandardScopes.Profile }
                     },
@@ -82,7 +82,7 @@ namespace AuthServer.Server
                         RedirectUris = { "https://localhost:5004/signin-oidc" },
                         PostLogoutRedirectUris = { "https://localhost:5004/signout-callback-oidc" },
                         AllowedCorsOrigins = { "https://localhost:5004" },
-                        AllowedScopes = { "api1", StandardScopes.OpenId, StandardScopes.Profile }                        
+                        AllowedScopes = { "api1", StandardScopes.OpenId, StandardScopes.Profile }
                     },
                 })
                 .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>()
