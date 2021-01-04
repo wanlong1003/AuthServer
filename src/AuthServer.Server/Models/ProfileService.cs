@@ -21,7 +21,7 @@ namespace AuthServer.Server.Models
         /// <returns></returns>
         public Task GetProfileDataAsync(ProfileDataRequestContext context)
         {
-            var subjectId = context.Subject.Claims.FirstOrDefault(c => c.Type == "sub").Value;
+            var subjectId = context.Subject.Claims.FirstOrDefault(c => c.Type == "sub").Value;            
             //根据用户id从数据库取得用户信息，写入Claim
             context.IssuedClaims = new List<Claim> {
                 new Claim(JwtClaimTypes.Subject,subjectId),

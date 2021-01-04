@@ -52,10 +52,10 @@ namespace AuthServer.Server
                         ClientName = "Code Client",
                         ClientSecrets = { new Secret("123456".Sha256())},
                         AllowedGrantTypes = GrantTypes.Code,
-                        RedirectUris = { "http://localhost:5002/signin-oidc" },
-                        PostLogoutRedirectUris = { "http://localhost:5002/signout-callback-oidc" },
+                        RedirectUris = { "https://localhost:5002/signin-oidc" },
+                        PostLogoutRedirectUris = { "https://localhost:5002/signout-callback-oidc" },
                         AllowOfflineAccess = true,
-                        AlwaysIncludeUserClaimsInIdToken = true,
+                        AlwaysIncludeUserClaimsInIdToken = true,                        
                         RequireConsent = true,
                         AllowedScopes = { "api1", StandardScopes.OpenId, StandardScopes.Profile }
                     },
@@ -65,9 +65,9 @@ namespace AuthServer.Server
                         AllowedGrantTypes = GrantTypes.Implicit,
                         AllowAccessTokensViaBrowser = true,
                         RequireConsent = true,
-                        RedirectUris = { "http://localhost:5003/callback.html" },
-                        PostLogoutRedirectUris = { "http://localhost:5003/index.html" },
-                        AllowedCorsOrigins = { "http://localhost:5003" },
+                        RedirectUris = { "https://localhost:5003/callback.html" },
+                        PostLogoutRedirectUris = { "https://localhost:5003/index.html" },
+                        AllowedCorsOrigins = { "https://localhost:5003" },
                         AllowedScopes = { "api1", StandardScopes.OpenId, StandardScopes.Profile },
                     },
                     new Client(){
@@ -76,8 +76,9 @@ namespace AuthServer.Server
                         ClientSecrets = { new Secret("123456".Sha256())},
                         AllowedGrantTypes = GrantTypes.Hybrid,
                         AllowOfflineAccess = true,
-                        RedirectUris = { "http://localhost:5004/signin-oidc" },
-                        PostLogoutRedirectUris = { "http://localhost:5004/signout-callback-oidc" },
+                        RedirectUris = { "https://localhost:5004/signin-oidc" },
+                        PostLogoutRedirectUris = { "https://localhost:5004/signout-callback-oidc" },
+                        AllowedCorsOrigins = { "https://localhost:5004" },
                         AllowedScopes = { "api1", StandardScopes.OpenId, StandardScopes.Profile }
                     },
                 })

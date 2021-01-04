@@ -15,31 +15,41 @@ namespace AuthServer.Example.Client.Hybrid
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = "Cookies";
+                options.DefaultChallengeScheme = "oidc";
+            })
+               .AddCookie("Cookies")
+               .AddOpenIdConnect("oidc", options =>
+               {
+                   options.SignInScheme = "Cookies";
+
+                   options.Authority = "https://localhost:5000";
+                   options.ClientId = "hybrid_client";
+                   options.ClientSecret = "123456";
+                   options.ResponseType = "code id_token";
+                   options.SaveTokens = true;
+                   options.GetClaimsFromUserInfoEndpoint = true;
+                   options.RequireHttpsMetadata = false;
+                   options.Scope.Add("openid");
+                   options.Scope.Add("profile");
+                   options.Scope.Add("offline_access");                   
+               });
+
+            services.AddAuthorization();
             services.AddControllersWithViews();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
+            app.UseDeveloperExceptionPage();
             app.UseStaticFiles();
-
+            app.UseAuthentication();
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

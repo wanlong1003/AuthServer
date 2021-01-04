@@ -1,14 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AuthServer.Example.Client.Code
 {
@@ -31,36 +24,17 @@ namespace AuthServer.Example.Client.Code
             .AddCookie("Cookies")
             .AddOpenIdConnect("oidc", options =>
             {
-                options.Authority = "http://localhost:5000";
+                options.Authority = "https://localhost:5000";
                 options.ClientId = "code_client";
                 options.ClientSecret = "123456";
                 options.ResponseType = "code";
-                //options.SaveTokens = true;
+                options.SaveTokens = true;
                 options.RequireHttpsMetadata = false;
-                //options.Scope.Add("openid");
-                //options.Scope.Add("profile");
-
-                IdentityModelEventSource.ShowPII = true;
+                options.Scope.Add("openid");
+                options.Scope.Add("profile");
             });
 
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("api1", policy =>
-                {
-                    policy.RequireAuthenticatedUser();
-                    policy.RequireClaim("scope", "api1");
-                });
-                options.AddPolicy("api2", policy =>
-                {
-                    policy.RequireAuthenticatedUser();
-                    policy.RequireClaim("scope", "api2");
-                });
-                options.AddPolicy("openid", policy =>
-                {
-                    policy.RequireAuthenticatedUser();
-                    policy.RequireClaim("scope", "openid");
-                });
-            });
+            services.AddAuthorization();
 
             services.AddControllersWithViews();
         }
