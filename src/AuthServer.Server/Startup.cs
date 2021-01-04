@@ -1,6 +1,8 @@
 using AuthServer.Server.Models;
+using IdentityServer4;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
+using Microsoft.AspNetCore.Authentication.QQ;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -87,6 +89,53 @@ namespace AuthServer.Server
                 })
                 .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>()
                 .Services.AddScoped<IProfileService, ProfileService>();
+
+            services.AddAuthentication()
+                //.AddGoogle("Google", options =>
+                //{
+                //    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+                //    options.ClientId = "";
+                //    options.ClientSecret = "";
+                //})
+                //.AddFacebook("Facebook", options =>
+                //{
+                //    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+                //    options.ClientId = "";
+                //    options.ClientSecret = "";
+                //})
+                //.AddMicrosoftAccount("MicrosoftAccount", options =>
+                //{
+                //    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+                //    options.ClientId = "";
+                //    options.ClientSecret = "";
+                //})
+                //.AddTwitter("Twitter", options =>
+                //{
+                //    options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+                //    options.ConsumerKey = "";
+                //    options.ConsumerSecret = "";
+                //})
+                .AddLinkedIn("LinkedIn", options =>
+                {
+                    options.ClientId = "86q7iml2m0t9fe";
+                    options.ClientSecret = "528EI4X9BUzjCesM";
+                })
+                //.AddGitHub(options =>
+                //{
+                //    options.ClientId = "648c067bd022b25f09d7";
+                //    options.ClientSecret = "bdbb069548d10fbcf541eb7e6badc6e4464a9771";
+                //});
+                .AddGitHub(options =>
+                {
+                    options.ClientId = "94d04883ecf82b593fc8";
+                    options.ClientSecret = "efcf19cf1de31ba07337d6ed5f8593129017d8f3";
+                });
+            //.AddQQ("QQ", options =>
+            // {
+            //     options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
+            //     options.AppId = "";
+            //     options.AppKey = "";
+            // });
 
             services.AddCors();
             services.AddControllersWithViews();
