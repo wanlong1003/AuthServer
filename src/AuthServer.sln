@@ -15,9 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.Example.Client.H
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.Example.Client.Code", "Examples\AuthServer.Example.Client.Code\AuthServer.Example.Client.Code.csproj", "{CEA5159C-56EB-41D0-A660-8DA58891CE04}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServer.Example.Provider.GitHub", "Examples\AuthServer.Example.Provider.GitHub\AuthServer.Example.Provider.GitHub.csproj", "{09F92D57-D15A-41A4-9C43-204B7EFC7526}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServer.Example.Provider.GitHub", "Examples\AuthServer.Example.Provider.GitHub\AuthServer.Example.Provider.GitHub.csproj", "{09F92D57-D15A-41A4-9C43-204B7EFC7526}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Providers", "Providers", "{5F97C35D-B13A-4694-864E-095131351002}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServer.Example.Provider.LinkedIn", "Examples\AuthServer.Example.Provider.LinkedIn\AuthServer.Example.Provider.LinkedIn.csproj", "{1D4FA172-BCCD-4DE2-B3F3-F1A4C35D3DA5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +103,18 @@ Global
 		{09F92D57-D15A-41A4-9C43-204B7EFC7526}.Release|x64.Build.0 = Release|Any CPU
 		{09F92D57-D15A-41A4-9C43-204B7EFC7526}.Release|x86.ActiveCfg = Release|Any CPU
 		{09F92D57-D15A-41A4-9C43-204B7EFC7526}.Release|x86.Build.0 = Release|Any CPU
+		{1D4FA172-BCCD-4DE2-B3F3-F1A4C35D3DA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D4FA172-BCCD-4DE2-B3F3-F1A4C35D3DA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D4FA172-BCCD-4DE2-B3F3-F1A4C35D3DA5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1D4FA172-BCCD-4DE2-B3F3-F1A4C35D3DA5}.Debug|x64.Build.0 = Debug|Any CPU
+		{1D4FA172-BCCD-4DE2-B3F3-F1A4C35D3DA5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1D4FA172-BCCD-4DE2-B3F3-F1A4C35D3DA5}.Debug|x86.Build.0 = Debug|Any CPU
+		{1D4FA172-BCCD-4DE2-B3F3-F1A4C35D3DA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D4FA172-BCCD-4DE2-B3F3-F1A4C35D3DA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D4FA172-BCCD-4DE2-B3F3-F1A4C35D3DA5}.Release|x64.ActiveCfg = Release|Any CPU
+		{1D4FA172-BCCD-4DE2-B3F3-F1A4C35D3DA5}.Release|x64.Build.0 = Release|Any CPU
+		{1D4FA172-BCCD-4DE2-B3F3-F1A4C35D3DA5}.Release|x86.ActiveCfg = Release|Any CPU
+		{1D4FA172-BCCD-4DE2-B3F3-F1A4C35D3DA5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,6 +125,7 @@ Global
 		{10EE013B-53DB-4E30-976D-51102FBE3BAB} = {207D5556-E861-46C3-9D1C-D5AB30485CFA}
 		{CEA5159C-56EB-41D0-A660-8DA58891CE04} = {207D5556-E861-46C3-9D1C-D5AB30485CFA}
 		{09F92D57-D15A-41A4-9C43-204B7EFC7526} = {5F97C35D-B13A-4694-864E-095131351002}
+		{1D4FA172-BCCD-4DE2-B3F3-F1A4C35D3DA5} = {5F97C35D-B13A-4694-864E-095131351002}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0E0F9D6B-2D97-48E6-9AED-37F15775244B}
