@@ -31,9 +31,13 @@ namespace AuthServer.Server
                     new IdentityResources.Email(),
                     new IdentityResources.Address()
                 })
+                .AddInMemoryApiResources(new ApiResource[] {
+                    new ApiResource("api1"){ Scopes = { "api1_scope" } },
+                    new ApiResource("api2"){ Scopes = { "api2_scope" } }
+                })
                 .AddInMemoryApiScopes(new ApiScope[]{
-                    new ApiScope("api1","API2"),
-                    new ApiScope("api2","API1")
+                    new ApiScope("api1_scope"),
+                    new ApiScope("api2_scope")
                 })
                 .AddInMemoryClients(new Client[]{
                      new Client(){
@@ -160,7 +164,7 @@ namespace AuthServer.Server
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseRouting();
-            app.UseAuthorization();            
+            app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
