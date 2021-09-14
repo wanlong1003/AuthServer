@@ -21,11 +21,13 @@ jobs:
       run: dotnet --version
     - name: pwd1
       run: pwd
+    - name: ls1
+      run: ls -a
     - name: cd to src
-      run: cd src
+      run: cd /home/runner/work/AuthServer/AuthServer/src
     - name: pwd2
       run: pwd
-    - name: ls
+    - name: ls2
       run: ls -a
     - name: Restore dependencies
       run: dotnet restore
