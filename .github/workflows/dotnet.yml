@@ -19,6 +19,10 @@ jobs:
         dotnet-version: 3.1.x
     - name: cd to src
       run: cd src
+    - name: pwd
+      run: pwd
+    - name: ls
+      run: ls -a
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
