@@ -17,9 +17,13 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.x
+    - name: dotnet-version
+      run: dotnet --version
+    - name: pwd1
+      run: pwd
     - name: cd to src
       run: cd src
-    - name: pwd
+    - name: pwd2
       run: pwd
     - name: ls
       run: ls -a
