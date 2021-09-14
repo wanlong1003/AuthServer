@@ -13,7 +13,7 @@ namespace AuthServer.Example.Client.Code
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("test action")
+            Console.WriteLine("test action");
             CreateHostBuilder(args).Build().Run();
         }
 
