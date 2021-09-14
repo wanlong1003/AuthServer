@@ -30,8 +30,8 @@ jobs:
     - name: ls2
       run: ls -a
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore src/AuthServer.sln
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore src/AuthServer.sln
     - name: Test
       run: dotnet test --no-build --verbosity normal
